@@ -15,3 +15,13 @@ cc_binary(
   copts = [],
   deps = [],
 )
+
+
+cc_binary(
+  name = "hungarian",
+  srcs = [
+    "hungarian.cc",
+  ],
+  copts = ["-fpermissive"],
+  deps = [],
+)

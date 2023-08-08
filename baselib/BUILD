@@ -4,6 +4,7 @@ cc_library(
   hdrs = [
     "log.hpp",
     "minitest.hpp",
+    "baselib.hpp",
   ],
   visibility = ["//visibility:public"]
 )

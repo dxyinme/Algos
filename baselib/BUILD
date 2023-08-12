@@ -5,6 +5,7 @@ cc_library(
     "log.hpp",
     "minitest.hpp",
     "baselib.hpp",
+    "minibench.hpp",
   ],
   visibility = ["//visibility:public"]
 )

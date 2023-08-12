@@ -110,7 +110,7 @@ namespace sort
   }
 
   template <typename T, typename Comparator>
-  void mergeSort(T *arr, size_t beginIdx, size_t endIdx, const Comparator &cmp, T *tmp)
+  void mergeSortImpl(T *arr, size_t beginIdx, size_t endIdx, const Comparator &cmp, T *tmp)
   {
     if (endIdx - beginIdx < 2)
     {
@@ -118,8 +118,8 @@ namespace sort
     }
 
     size_t mid = (beginIdx + endIdx) / 2;
-    mergeSort(arr, beginIdx, mid, cmp, tmp);
-    mergeSort(arr, mid, endIdx, cmp, tmp);
+    mergeSortImpl(arr, beginIdx, mid, cmp, tmp);
+    mergeSortImpl(arr, mid, endIdx, cmp, tmp);
     mergeSortedSubArrays(arr, beginIdx, mid, endIdx, cmp, tmp);
   }
 
@@ -127,11 +127,63 @@ namespace sort
   void MergeSort(T *arr, size_t beginIdx, size_t endIdx, const Comparator &cmp)
   {
     T *tmp = new T[endIdx - beginIdx + 5];
-    mergeSort(arr + beginIdx, 0, endIdx - beginIdx, cmp, tmp);
+    mergeSortImpl(arr + beginIdx, 0, endIdx - beginIdx, cmp, tmp);
     delete[] tmp;
   }
 
 #pragma endregion
+
+#pragma region HeapSort
+
+  template <typename T, typename Comparator>
+  void heapDownTo(T *p, size_t t, size_t n, const Comparator &cmp)
+  {
+    while (true)
+    {
+      auto l = (t << 1 | 1);
+      auto nxt = l;
+      if (l >= n)
+      {
+        break;
+      }
+      auto r = l + 1;
+
+      if (r < n && cmp.Less(p[nxt], p[r]))
+      {
+        nxt = r;
+      }
+      if (!cmp.Less(p[t], p[nxt]))
+      {
+        break;
+      }
+      Swap(p[t], p[nxt]);
+      t = nxt;
+    }
+  }
+
+  template <typename T, typename Comparator>
+  void heapSortImpl(T *p, size_t n, const Comparator &cmp)
+  {
+    // heapify
+    for (int i = n / 2 - 1; i >= 0; i--)
+    {
+      heapDownTo(p, i, n, cmp);
+    }
+
+    for (size_t last = n - 1; last >= 1; last--)
+    {
+      Swap(p[0], p[last]);
+      heapDownTo(p, 0, last - 1, cmp);
+    }
+  }
+
+  template <typename T, typename Comparator>
+  void HeapSort(T *p, size_t beginIdx, size_t endIdx, const Comparator &cmp)
+  {
+    heapSortImpl(p + beginIdx, endIdx - beginIdx, cmp);
+  }
+#pragma endregion
+
 } // namespace sort
 
 #endif

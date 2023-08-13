@@ -1,0 +1,15 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  compile-witm-bazel:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@master
+    - name: bazel build
+      run: bazel build ...

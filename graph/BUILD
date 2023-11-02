@@ -25,3 +25,12 @@ cc_binary(
   copts = ["-fpermissive"],
   deps = [],
 )
+
+cc_binary(
+  name = "floyd",
+  srcs = [
+    "floyd.cc",
+  ],
+  copts = ["-fpermissive"],
+  deps = [],
+)

@@ -4,3 +4,4 @@ bazel-testlogs
 bazel-Algos
 .vscode
 data/
+.hypothesis/

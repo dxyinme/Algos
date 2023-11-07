@@ -15,3 +15,8 @@ cc_binary(
     "multi-hash.hpp",
   ]
 )
+
+cc_binary(
+  name = "luoguP3370",
+  srcs = ["luoguP3370.cc"]
+)

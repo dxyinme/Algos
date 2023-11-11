@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  compile-witm-bazel:
+  compile-with-bazel:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@master

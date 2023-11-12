@@ -1,32 +1,36 @@
 #include <iostream>
 #include <vector>
 
-template <typename T>
-void print1(std::vector<T> &&v)
+namespace lchelper
 {
-  for (auto iter : v)
-  {
-    std::cout << iter << ",";
-  }
-  std::cout << "\n";
-}
 
-template <typename T>
-void print2(std::vector<std::vector<T>> &&v2)
-{
-  for (auto v : v2)
+  template <typename T>
+  void print1(std::vector<T> &&v)
   {
-    print1(v);
+    for (auto iter : v)
+    {
+      std::cout << iter << ",";
+    }
+    std::cout << "\n";
   }
-  std::cout << "\n";
-}
 
-template <typename T>
-void print2(std::vector<std::vector<T>> &v2)
-{
-  for (auto v : v2)
+  template <typename T>
+  void print2(std::vector<std::vector<T>> &&v2)
   {
-    print1(v);
+    for (auto v : v2)
+    {
+      print1(v);
+    }
+    std::cout << "\n";
   }
-  std::cout << "\n";
-}
+
+  template <typename T>
+  void print2(std::vector<std::vector<T>> &v2)
+  {
+    for (auto v : v2)
+    {
+      print1(v);
+    }
+    std::cout << "\n";
+  }
+} // namespace lchelper

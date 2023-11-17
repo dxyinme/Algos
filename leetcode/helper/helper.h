@@ -5,6 +5,16 @@ namespace lchelper
 {
 
   template <typename T>
+  void print1(std::vector<T> &v)
+  {
+    for (auto iter : v)
+    {
+      std::cout << iter << ",";
+    }
+    std::cout << "\n";
+  }
+
+  template <typename T>
   void print1(std::vector<T> &&v)
   {
     for (auto iter : v)

@@ -1,3 +1,6 @@
+#pragma once
+#ifndef _ALGOS_LEETCODE_HELPER_H
+#define _ALGOS_LEETCODE_HELPER_H
 #include <iostream>
 #include <vector>
 
@@ -44,3 +47,5 @@ namespace lchelper
     std::cout << "\n";
   }
 } // namespace lchelper
+
+#endif
